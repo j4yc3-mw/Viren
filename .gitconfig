@@ -1,0 +1,21 @@
+[user]
+	name = j4yc3-mw
+	email = j4yc3mw@gmail.com
+[safe]
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+	directory = /storage/emulated/0/Download/test-repo
+[credential]
+	helper = store
+[init]
+	defaultBranch = main

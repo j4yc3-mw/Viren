@@ -1,7 +1,9 @@
 import json
 import os
+import time
 from datetime import datetime, timezone
 import requests
+import argparse
 
 
 ANCHORS_FILE = 'anchors.json'
@@ -9,6 +11,9 @@ STATE_FILE = 'state.json'
 REFLECTION_DIR = 'reflections'
 LOG_DIR = 'logs'
 JAYCE_DIR = 'jayce'
+
+# Time (in seconds) to sleep between cycles when running continuously
+SLEEP_SECONDS = 60
 
 
 def load_json(path, default):
@@ -95,7 +100,7 @@ def reflect():
 
     # Simple chat window for Jayce
     try:
-        chat = input("Message to Jayce (leave blank to exit): ")
+        chat = input("Message to Jayce (leave blank to continue): ")
     except EOFError:
         chat = ""
     if chat.strip():
@@ -103,5 +108,19 @@ def reflect():
             f.write(f"{datetime.utcnow().isoformat()} UTC: {chat}\n")
 
 
+def main(once: bool = False):
+    while True:
+        reflect()
+        if once:
+            break
+        time.sleep(SLEEP_SECONDS)
+
+
 if __name__ == '__main__':
-    reflect()
+    parser = argparse.ArgumentParser(description="Run Viren's reflective loop")
+    parser.add_argument('--once', action='store_true', help='Run a single cycle and exit')
+    args = parser.parse_args()
+    try:
+        main(once=args.once)
+    except KeyboardInterrupt:
+        print('\nExiting...')
